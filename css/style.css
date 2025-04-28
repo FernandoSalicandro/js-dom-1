@@ -1,0 +1,28 @@
+* {
+    margin : 0;
+    padding: 0;
+    box-sizing : border-box;
+}
+
+.container {
+ width: 80%;
+ margin: 0 auto;
+ margin-top : 12.5%;
+ display : flex;
+ justify-content: center;
+ align-items: center;
+
+}
+
+.flex {
+    display: flex;
+}
+
+.accendi-btn {
+    align-self: center;
+}
+
+ .accendi-btn-pink {
+    background-color: pink;
+}
+
