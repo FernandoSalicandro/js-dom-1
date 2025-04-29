@@ -1,35 +1,35 @@
 //prelevo sia l'elemento lampadina sia l'elemento bottone per poterli manipolare
 
-const lampadinaImg = document.getElementById("btn-img");
-console.log(lampadinaImg);
+// const lampadinaImg = document.getElementById("btn-img");
+// console.log(lampadinaImg);
 
-const btnAccensioneLampadina = document.querySelector(".accendi-btn")
-console.log(btnAccensioneLampadina)
+// const btnAccensioneLampadina = document.querySelector(".accendi-btn")
+// console.log(btnAccensioneLampadina)
 
-//imposto la variabile flag di stato
-let accesa = false;
+// //imposto la variabile flag di stato
+// let accesa = false;
 
-btnAccensioneLampadina.addEventListener("click", function () {
+// btnAccensioneLampadina.addEventListener("click", function () {
 
-    //imposto la callback function in base allo stato del bottone
+//     //imposto la callback function in base allo stato del bottone
 
-    if (!accesa) {
-        btnAccensioneLampadina.classList.add("accendi-btn-pink")
-        btnAccensioneLampadina.innerText = "Spegni La Lampadina";
-        lampadinaImg.src = "./img/yellow_lamp 1.png"
-        console.log(btnAccensioneLampadina)
-        accesa = true;
-    }
+//     if (!accesa) {
+//         btnAccensioneLampadina.classList.add("accendi-btn-pink")
+//         btnAccensioneLampadina.innerText = "Spegni La Lampadina";
+//         lampadinaImg.src = "./img/yellow_lamp 1.png"
+//         console.log(btnAccensioneLampadina)
+//         accesa = true;
+//     }
 
-    else {
-        btnAccensioneLampadina.classList.remove("accendi-btn-pink");
-        btnAccensioneLampadina.innerText = "Accendi La Lampadina";
-        lampadinaImg.src = "./img/white_lamp 1.png";
-        accesa = false;
-    }
+//     else {
+//         btnAccensioneLampadina.classList.remove("accendi-btn-pink");
+//         btnAccensioneLampadina.innerText = "Accendi La Lampadina";
+//         lampadinaImg.src = "./img/white_lamp 1.png";
+//         accesa = false;
+//     }
 
 
-})
+// })
 
 
 // metodo più compatto tramite toggle
@@ -52,47 +52,52 @@ btnAccensioneLampadina.addEventListener("click", function () {
 
 //Versione bonus - lampadina che lampeggia;
 
-// const bottoneLampadina = document.querySelector(".accendi-btn");
-// console.log(bottoneLampadina);
-
-// const immagineLampadina = document.getElementById("btn-img");
-// console.log(immagineLampadina);
+const bottoneLampadina = document.querySelector(".accendi-btn");
 
 
-// //setto indicatori di stato
-// let èAccesa = false;
-// let staLampeggiando = false;
-// let interval;
+const immagineLampadina = document.getElementById("btn-img");
 
 
-// bottoneLampadina.addEventListener("click", function () {
-//     if (!staLampeggiando) {
-//         // Primo click: avvia il lampeggio
-//         bottoneLampadina.classList.add("accendi-btn-pink");
-//         bottoneLampadina.innerText = "Spegni Lampadina";
 
-//         interval = setInterval(function () {
-//             if (èAccesa) {
-//                 immagineLampadina.src = "./img/white_lamp 1.png";
-//                 èAccesa = false;
-//             } else {
-//                 immagineLampadina.src = "./img/yellow_lamp 1.png";
-//                 èAccesa = true;
-//             }
-//         }, 300);
+//setto indicatori di stato
+let èAccesa = false;
+let staLampeggiando = false;
 
-//         staLampeggiando = true;
+//dichiaro l'intervallo per dopo
+let interval;
 
-//     } else {
-//         // Secondo click: ferma il lampeggio
-//         clearInterval(interval);
-//         bottoneLampadina.classList.remove("accendi-btn-pink");
-//         bottoneLampadina.innerText = "Accendi Lampadina";
-//         immagineLampadina.src = "./img/white_lamp 1.png"; // rimetti immagine spenta
-//         èAccesa = false;
-//         staLampeggiando = false;
-//     }
-// });
+
+bottoneLampadina.addEventListener("click", function lampeggia() {
+
+    //al primo click cambio il bg e il testo del bottone e faccio lampeggiare
+    if (!staLampeggiando) {
+
+        bottoneLampadina.classList.add("accendi-btn-pink");
+        bottoneLampadina.innerText = "Spegni Lampadina";
+
+        interval = setInterval(function () {
+            if (èAccesa) {
+                immagineLampadina.src = "./img/white_lamp 1.png";
+                èAccesa = false;
+            } else {
+                immagineLampadina.src = "./img/yellow_lamp 1.png";
+                èAccesa = true;
+            }
+        }, 300);
+
+        staLampeggiando = true;
+
+    } else {
+        
+        //al secondo click fermo l'intervallo e restituisco lo stile originale
+        clearInterval(interval);
+        bottoneLampadina.classList.remove("accendi-btn-pink");
+        bottoneLampadina.innerText = "Accendi Lampadina";
+        immagineLampadina.src = "./img/white_lamp 1.png"; 
+        èAccesa = false;
+        staLampeggiando = false;
+    }
+});
 
 
 
